@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class ResultsQueries {
 
     public static void insert(String name, int result, int time) {
+
         String sql = "INSERT INTO results(player_name, result, time_taken, quiz_date) VALUES(?,?,?,?)";
 
         try (Connection conn = DBCreator.connect();

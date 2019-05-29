@@ -1,5 +1,10 @@
 package quiz;
 
+import database.DBCreator;
+import database.QuestionsQueries;
+import database.ResultsQueries;
+import objects.Answer;
+import objects.Combination;
 import screens.GameScreen;
 import screens.WelcomeScreen;
 
@@ -55,12 +60,23 @@ public class Quiz {
 
     public static void main(String... args)
     {
-        SwingUtilities.invokeLater(new Runnable()
+        /*SwingUtilities.invokeLater(new Runnable()
         {
             public void run()
             {
                 new Quiz().displayGUI();
             }
-        });
+        });*/
+        //DBCreator.new_question("What is population of Slovenia?", "Geography",
+          //      7, "6 million", "2 million",
+           //     "4 million", "8 million", 2);
+        Combination c = QuestionsQueries.getQuestionByDifficulty(7);
+        if (c.getQuestion() != null) {
+            System.out.println(c.getQuestion().getQuestion());
+            for(Answer a : c.getAnswers()) {
+                System.out.println(a.getAnswer());
+                System.out.println(a.getCorrect());
+            }
+        }
     }
 }

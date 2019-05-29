@@ -1,6 +1,7 @@
 package database;
 
 import constants.Database;
+import objects.Question;
 import objects.Result;
 
 import java.sql.*;
@@ -50,9 +51,9 @@ public class DBCreator {
 
         try (Connection conn = DriverManager.getConnection(path);
              Statement stmt = conn.createStatement()) {
-            stmt.execute(sql_results);
+            //stmt.execute(sql_results);
             //stmt.execute(sql_questions);
-            //stmt.execute(sql_answers);
+            stmt.execute(sql_answers);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -67,6 +68,16 @@ public class DBCreator {
             System.out.println(e.getMessage());
         }
         return conn;
+    }
+
+    public static void new_question(String question, String topic, int difficulty,
+                                    String optionOne, String optionTwo,
+                                    String optionThree, String optionFour, int correctOption) {
+        int newQuestionId = QuestionsQueries.insert(question, topic, difficulty);
+        String[] answers = {optionOne, optionTwo, optionThree, optionFour};
+        if (newQuestionId != -1) {
+            AnswersQueries.insert(answers, newQuestionId, correctOption);
+        }
     }
 
     public static void main(String[] args) {
