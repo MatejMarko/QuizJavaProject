@@ -73,7 +73,6 @@ public class GameScreen extends JPanel
     private void setQuestionPanel() {
         for (int i = 0; i < MAX_QUESTIONS; i++) {
             progress_panel.setLayout(new GridLayout(0,1));
-            GridLayout gl = new GridLayout(0,1);
             JLabel p = new JLabel("Question " + (i+1));
             seznam[i] = p;
             seznam[i].setForeground(Color.WHITE);

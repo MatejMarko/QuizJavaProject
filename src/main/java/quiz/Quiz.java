@@ -5,6 +5,7 @@ import database.QuestionsQueries;
 import database.ResultsQueries;
 import objects.Answer;
 import objects.Combination;
+import screens.AddNewQuestion;
 import screens.GameScreen;
 import screens.WelcomeScreen;
 
@@ -16,7 +17,7 @@ public class Quiz {
     private JPanel contentPane;
     private WelcomeScreen panel1;
     private GameScreen panel2;
-    private GameScreen panel3;
+    private AddNewQuestion panel3;
     private JComboBox choiceBox;
     private String[] choices = {
             "Panel 1",
@@ -39,14 +40,13 @@ public class Quiz {
         panel1 = new WelcomeScreen(contentPane, this);
         panel2 = new GameScreen(contentPane
                 , Color.GREEN.darker().darker(), this);
-        panel3 = new GameScreen(contentPane
-                , Color.DARK_GRAY, this);
+        panel3 = new AddNewQuestion(contentPane, this);
 
         contentPane.add(panel1, "Welcome screen");
         contentPane.add(panel2, "Game screen");
-        contentPane.add(panel3, "Panel 3");
+        contentPane.add(panel3, "Add New Question");
 
-        frame.getContentPane().add(choiceBox, BorderLayout.PAGE_START);
+        //frame.getContentPane().add(choiceBox, BorderLayout.PAGE_START);
         frame.getContentPane().add(contentPane, BorderLayout.CENTER);
         frame.pack();
         frame.setLocationByPlatform(true);
@@ -60,16 +60,17 @@ public class Quiz {
 
     public static void main(String... args)
     {
-        /*SwingUtilities.invokeLater(new Runnable()
+        SwingUtilities.invokeLater(new Runnable()
         {
             public void run()
             {
                 new Quiz().displayGUI();
             }
-        });*/
+        });
         //DBCreator.new_question("What is population of Slovenia?", "Geography",
           //      7, "6 million", "2 million",
            //     "4 million", "8 million", 2);
+        /*
         Combination c = QuestionsQueries.getQuestionByDifficulty(7);
         if (c.getQuestion() != null) {
             System.out.println(c.getQuestion().getQuestion());
@@ -77,6 +78,6 @@ public class Quiz {
                 System.out.println(a.getAnswer());
                 System.out.println(a.getCorrect());
             }
-        }
+        }*/
     }
 }

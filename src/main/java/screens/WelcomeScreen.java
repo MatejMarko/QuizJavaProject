@@ -13,6 +13,7 @@ import java.io.IOException;
 public class WelcomeScreen extends JPanel
 {
     private JButton jcomp4;
+    private JButton addQuestionButton;
     private JPanel contentPane;
     private JComboBox choiceBox;
 
@@ -34,6 +35,16 @@ public class WelcomeScreen extends JPanel
             }
         });
         add(jcomp4);
+
+        addQuestionButton = new JButton("Add New Question");
+        addQuestionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+                cardLayout.show(contentPane, "Add New Question");
+            }
+        });
+        add(addQuestionButton);
     }
 
     @Override
