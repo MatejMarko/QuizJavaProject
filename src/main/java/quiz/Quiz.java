@@ -65,6 +65,19 @@ public class Quiz {
             public void run()
             {
                 new Quiz().displayGUI();
+                /*
+                for (int i = 0; i<=15; i++) {
+                    Combination c = QuestionsQueries.getQuestionByDifficulty(i);
+                    System.out.println(i);
+                    if (c.getQuestion() != null) {
+                        System.out.println(c.getQuestion().getQuestion());
+                        for (Answer a : c.getAnswers()) {
+                            System.out.println(a.getAnswer());
+                            System.out.println(a.getCorrect());
+                        }
+                    }
+                }
+                */
             }
         });
         //DBCreator.new_question("What is population of Slovenia?", "Geography",
