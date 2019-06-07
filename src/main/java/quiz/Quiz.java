@@ -14,16 +14,10 @@ import java.awt.*;
 
 public class Quiz {
 
-    private JPanel contentPane;
+    public static JPanel contentPane;
     private WelcomeScreen panel1;
-    private GameScreen panel2;
+    public static GameScreen panel2;
     private AddNewQuestion panel3;
-    private JComboBox choiceBox;
-    private String[] choices = {
-            "Panel 1",
-            "Panel 2",
-            "Panel 3"
-    };
 
     private void displayGUI()
     {
@@ -35,27 +29,18 @@ public class Quiz {
                 BorderFactory.createEmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new CardLayout());
 
-        choiceBox = new JComboBox(choices);
-
         panel1 = new WelcomeScreen(contentPane, this);
-        panel2 = new GameScreen(contentPane
-                , Color.GREEN.darker().darker(), this);
+        panel2 = new GameScreen(contentPane,this);
         panel3 = new AddNewQuestion(contentPane, this);
 
         contentPane.add(panel1, "Welcome screen");
         contentPane.add(panel2, "Game screen");
         contentPane.add(panel3, "Add New Question");
 
-        //frame.getContentPane().add(choiceBox, BorderLayout.PAGE_START);
         frame.getContentPane().add(contentPane, BorderLayout.CENTER);
         frame.pack();
         frame.setLocationByPlatform(true);
         frame.setVisible(true);
-    }
-
-    public JComboBox getChoiceBox()
-    {
-        return choiceBox;
     }
 
     public static void main(String... args)
@@ -65,32 +50,7 @@ public class Quiz {
             public void run()
             {
                 new Quiz().displayGUI();
-                /*
-                for (int i = 0; i<=15; i++) {
-                    Combination c = QuestionsQueries.getQuestionByDifficulty(i);
-                    System.out.println(i);
-                    if (c.getQuestion() != null) {
-                        System.out.println(c.getQuestion().getQuestion());
-                        for (Answer a : c.getAnswers()) {
-                            System.out.println(a.getAnswer());
-                            System.out.println(a.getCorrect());
-                        }
-                    }
-                }
-                */
             }
         });
-        //DBCreator.new_question("What is population of Slovenia?", "Geography",
-          //      7, "6 million", "2 million",
-           //     "4 million", "8 million", 2);
-        /*
-        Combination c = QuestionsQueries.getQuestionByDifficulty(7);
-        if (c.getQuestion() != null) {
-            System.out.println(c.getQuestion().getQuestion());
-            for(Answer a : c.getAnswers()) {
-                System.out.println(a.getAnswer());
-                System.out.println(a.getCorrect());
-            }
-        }*/
     }
 }

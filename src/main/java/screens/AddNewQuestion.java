@@ -56,6 +56,16 @@ public class AddNewQuestion extends JPanel {
         add(filler);
         filler.setBorder(new EmptyBorder(25, 0, 25, 0));
 
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout cardLayout = (CardLayout) panel.getLayout();
+                cardLayout.show(panel, "Welcome screen");
+            }
+        });
+        questionPanel.add(backButton);
+
 
         JLabel questionLabel = new JLabel("Question");
         question = new JTextArea();

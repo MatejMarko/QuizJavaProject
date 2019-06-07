@@ -15,11 +15,9 @@ public class WelcomeScreen extends JPanel
     private JButton jcomp4;
     private JButton addQuestionButton;
     private JPanel contentPane;
-    private JComboBox choiceBox;
 
     public WelcomeScreen(JPanel panel, Quiz cle) {
 
-        choiceBox = cle.getChoiceBox();
         contentPane = panel;
         setOpaque(true);
         setBackground(Color.RED.darker().darker());
@@ -29,7 +27,6 @@ public class WelcomeScreen extends JPanel
         {
             public void actionPerformed(ActionEvent e)
             {
-                String changeToPanel = (String) choiceBox.getSelectedItem();
                 CardLayout cardLayout = (CardLayout) contentPane.getLayout();
                 cardLayout.show(contentPane, "Game screen");
             }

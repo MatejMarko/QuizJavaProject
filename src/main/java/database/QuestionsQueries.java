@@ -15,7 +15,7 @@ public class QuestionsQueries {
         ArrayList<Answer> answers = null;
 
         // TODO ADD RANDOM
-        String sql = "SELECT * FROM questions WHERE difficulty = ? LIMIT 1";
+        String sql = "SELECT * FROM questions WHERE difficulty = ? ORDER BY RANDOM() LIMIT 1";
         int id = -1;
 
         try (Connection conn = DBCreator.connect();
